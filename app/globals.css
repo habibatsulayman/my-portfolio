@@ -8,6 +8,20 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  
+  /* champagne */
+  --color-champagne-mist-50: #fcf5e8;
+  --color-champagne-mist-100: #faebd1;
+  --color-champagne-mist-200: #f5d7a3;
+  --color-champagne-mist-300: #f0c375;
+  --color-champagne-mist-400: #ebaf47;
+  --color-champagne-mist-500: #e69b19;
+  --color-champagne-mist-600: #b87c14;
+  --color-champagne-mist-700: #8a5d0f;
+  --color-champagne-mist-800: #5c3e0a;
+  --color-champagne-mist-900: #2e1f05;
+  --color-champagne-mist-950: #201604;
+
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
@@ -23,4 +37,9 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Enable smooth in-page scrolling for anchor links */
+html {
+  scroll-behavior: smooth;
 }
