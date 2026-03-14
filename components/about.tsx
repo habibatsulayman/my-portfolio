@@ -1,7 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 import { SiHtml5, SiCss3, SiJavascript, SiKotlin, SiAndroid } from 'react-icons/si';
-import { FaGraduationCap, FaCode, FaGlobe, FaGithub, FaLinkedin, FaTwitter } from 'react-icons/fa';
+import { FaCode, FaGithub, FaLinkedin, FaTwitter } from 'react-icons/fa';
 
 const About: React.FC = () => {
   return (
@@ -10,29 +10,29 @@ const About: React.FC = () => {
         <div className="text-center">
           <h2 className="text-base text-champagne-mist-600 font-semibold leading-7 dark:text-champagne-mist-400">Introduction</h2>
           <p className="mt-2 text-3xl font-bold tracking-tight text-gray-900 dark:text-gray-50 sm:text-4xl">About me</p>
-          
+
         </div>
 
         <div className="grid grid-cols-1 gap-x-4 lg:gap-x-8 gap-y-16 sm:gap-y-20 lg:grid-cols-2 lg:items-start mt-12">
           {/* Left column: Image */}
-        
-              <div className="flex items-center justify-center sm:mx-0 sm:max-w-none">
-                <Image
-                  src="/projects/my-image.png"
-                  alt="Habeebah Olasubomi"
-                  width={300}
-                  height={300}
-                  className="rounded-full"
-                />
-              </div>
-        
+
+          <div className="flex items-center justify-center sm:mx-0 sm:max-w-none">
+            <Image
+              src="/projects/my-image.png"
+              alt="Habeebah Olasubomi"
+              width={300}
+              height={300}
+              className="rounded-full"
+            />
+          </div>
+
 
           {/* Right column: Cards in grid */}
           <div className="px-4 lg:px-0 lg:pr-4 lg:pt-4">
 
-          <p className="mt-4 mb-10 text-md leading-8 text-gray-600 dark:text-gray-300 max-w-3xl lg:mx-0">
-           I build interfaces that people enjoy using—on the web and now on Android. With Kotlin and Jetpack Compose, I'm expanding my craft into mobile experiences that are both beautiful and functional.
-          </p>
+            <p className="mt-4 mb-10 text-md leading-8 text-gray-600 dark:text-gray-300 max-w-3xl lg:mx-0">
+              I build interfaces that people enjoy using—on the web and now on Android. With Kotlin and Jetpack Compose, I&apos;m expanding my craft into mobile experiences that are both beautiful and functional.
+            </p>
             <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2">
               {/* Tech Stack Card (now includes socials) */}
               <article className="rounded-2xl bg-white shadow ring-1 ring-gray-900/5 p-4 dark:bg-gray-800 dark:ring-white/5">

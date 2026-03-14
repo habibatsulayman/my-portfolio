@@ -13,10 +13,10 @@ const Hero = () => {
           className="rounded-full mx-auto mb-8"
         />
         <h1 className="text-4xl font-bold tracking-tight text-gray-900 dark:text-gray-50 sm:text-6xl">
-          Hi, I'm Habeebah Sulayman
+          Hi, I&apos;m Habeebah Sulayman
         </h1>
         <p className="mt-6 text-md leading-8 text-gray-600 dark:text-gray-300 p-2">
-          A Frontend developer with 2+ years of experience, passionate about building responsive and functional websites and mobile applications.
+          A Software Developer with 2+ years of experience, passionate about building responsive and functional websites and mobile applications.
         </p>
         <div className="mt-10 flex items-center justify-center gap-x-6">
           <a

@@ -44,6 +44,7 @@ const TechStack = () => {
               <div key={tech.name} className="flex flex-col items-center">
                 <dt>
                   <div className="flex h-20 w-20 items-center justify-center rounded-lg">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img src={tech.icon} alt={tech.name} className="h-16 w-16" />
                   </div>
                   <p className="mt-4 font-semibold text-gray-900 dark:text-gray-50">{tech.name}</p>

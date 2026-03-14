@@ -8,7 +8,7 @@ const Contact = () => {
           <p className="text-base text-champagne-mist-600 font-semibold leading-7 dark:text-champagne-mist-400 mb-2">Get in touch</p>
           <h2 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-gray-50 sm:text-4xl">Connect with me</h2>
           <p className="mt-2 text-lg leading-8 text-gray-600 dark:text-gray-300">
-            I'd love to hear from you! If you have any questions, comments or feedback, please feel free to reach out.
+            I&apos;d love to hear from you! If you have any questions, comments or feedback, please feel free to reach out.
           </p>
         </div>
         <form action="#" method="POST" className="mx-auto mt-12 max-w-xl sm:mt-16">
