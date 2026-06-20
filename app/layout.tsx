@@ -1,21 +1,30 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Inter, Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import Navbar from "../components/navbar/page";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
+  display: "swap",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const spaceGrotesk = Space_Grotesk({
+  variable: "--font-space-grotesk",
   subsets: ["latin"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "My Portfolio",
-  description: "Welcome to my personal portfolio website showcasing my projects and skills.",
+  title: "Habeebah Sulayman — Mobile Software Engineer",
+  description:
+    "Mobile software engineer specialising in Kotlin Multiplatform, Jetpack Compose, and cross-platform Android & iOS development. Currently building AssistantX at Layer Axis, London.",
+  openGraph: {
+    title: "Habeebah Sulayman — Mobile Software Engineer",
+    description:
+      "Mobile software engineer specialising in Kotlin Multiplatform, Jetpack Compose, and cross-platform Android & iOS development.",
+    type: "website",
+  },
 };
 
 export default function RootLayout({
@@ -24,9 +33,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body id="top"
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+    <html lang="en" suppressHydrationWarning>
+      <body
+        id="top"
+        className={`${inter.variable} ${spaceGrotesk.variable} antialiased`}
+        suppressHydrationWarning
       >
         <Navbar />
         {/* Spacer to prevent fixed navbar from overlapping content */}

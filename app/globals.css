@@ -1,45 +1,77 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --bg: #0F1117;
+  --surface: #1A1D27;
+  --surface-2: #22263A;
+  --border: #2E3249;
+  --text: #F0EFF9;
+  --text-muted: #8B89A8;
+  --accent: #6C63FF;
+  --accent-soft: #B8B5FF;
+  --accent-glow: rgba(108, 99, 255, 0.18);
+  --green: #4ADE80;
+
+  --background: var(--bg);
+  --foreground: var(--text);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  
-  /* champagne */
-  --color-champagne-mist-50: #fcf5e8;
-  --color-champagne-mist-100: #faebd1;
-  --color-champagne-mist-200: #f5d7a3;
-  --color-champagne-mist-300: #f0c375;
-  --color-champagne-mist-400: #ebaf47;
-  --color-champagne-mist-500: #e69b19;
-  --color-champagne-mist-600: #b87c14;
-  --color-champagne-mist-700: #8a5d0f;
-  --color-champagne-mist-800: #5c3e0a;
-  --color-champagne-mist-900: #2e1f05;
-  --color-champagne-mist-950: #201604;
 
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-accent: #6C63FF;
+  --color-accent-soft: #B8B5FF;
+  --color-surface: #1A1D27;
+  --color-surface-2: #22263A;
+  --color-border: #2E3249;
+  --color-text-muted: #8B89A8;
+
+  --font-display: 'Space Grotesk', sans-serif;
+  --font-sans: 'Inter', sans-serif;
+  --font-mono: 'Space Grotesk', monospace;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  overflow-x: hidden;
 }
 
-/* Enable smooth in-page scrolling for anchor links */
-html {
-  scroll-behavior: smooth;
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent);
+}
+
+/* Section divider */
+.section-divider {
+  height: 1px;
+  background: var(--border);
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+/* Responsive grids */
+@media (max-width: 680px) {
+  .skills-grid {
+    grid-template-columns: 1fr !important;
+  }
 }

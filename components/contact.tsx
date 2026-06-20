@@ -1,123 +1,222 @@
 "use client";
 
-import React, { useRef } from 'react';
-import { motion, useInView } from 'framer-motion';
+import React, { useRef } from "react";
+import { motion, useInView } from "framer-motion";
 
-const Contact = () => {
+function ScrollReveal({
+  children,
+  delay = 0,
+}: {
+  children: React.ReactNode;
+  delay?: number;
+}) {
   const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: '-60px' });
+  const inView = useInView(ref, { once: true, margin: "-60px" });
+  return (
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 0, y: 20 }}
+      animate={inView ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.55, ease: "easeOut", delay }}
+    >
+      {children}
+    </motion.div>
+  );
+}
+
+const socialLinks = [
+  {
+    label: "GitHub",
+    href: "https://github.com/habibatsulayman",
+    icon: (
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z" />
+      </svg>
+    ),
+  },
+  {
+    label: "LinkedIn",
+    href: "http://linkedin.com/in/sulayman-habibat-olasubomi",
+    icon: (
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+      </svg>
+    ),
+  },
+  {
+    label: "Twitter / X",
+    href: "https://twitter.com/HabeebahOlasub1",
+    icon: (
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.746l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+      </svg>
+    ),
+  },
+];
+
+const Contact: React.FC = () => {
+  const ref = useRef(null);
+  const inView = useInView(ref, { once: true, margin: "-60px" });
 
   return (
-    <section id="contact" ref={ref} className="py-16 sm:py-24">
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
-
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, ease: 'easeOut' }}
-          className="mx-auto max-w-xl text-center"
-        >
-          <p className="text-sm text-champagne-mist-600 font-semibold leading-7 dark:text-champagne-mist-400 mb-1">Get in touch</p>
-          <h2 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-gray-50 sm:text-4xl">Connect with me</h2>
-          <p className="mt-3 text-base leading-7 text-gray-600 dark:text-gray-300">
-            I&apos;d love to hear from you! If you have any questions, comments or feedback, feel free to reach out.
-          </p>
-        </motion.div>
-
-        <motion.form
-          initial={{ opacity: 0, y: 30 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, ease: 'easeOut', delay: 0.2 }}
-          action="#"
-          method="POST"
-          className="mx-auto mt-10 max-w-md bg-white dark:bg-gray-800/40 p-6 sm:p-8 rounded-2xl shadow-sm ring-1 ring-gray-900/5 dark:ring-white/10"
-        >
-          <div className="grid grid-cols-1 gap-y-5">
-            <div className="grid grid-cols-1 gap-x-4 gap-y-5 sm:grid-cols-2">
-              <div>
-                <label htmlFor="first-name" className="block text-xs font-semibold leading-6 text-gray-900 dark:text-gray-100">
-                  First name
-                </label>
-                <div className="mt-1">
-                  <input
-                    type="text"
-                    name="first-name"
-                    id="first-name"
-                    autoComplete="given-name"
-                    className="block w-full rounded-md border-0 px-3 py-1.5 text-gray-900 dark:text-white dark:bg-gray-900/50 shadow-sm ring-1 ring-inset ring-gray-300 dark:ring-gray-700 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-[var(--color-champagne-mist-500)] sm:text-sm sm:leading-6 transition-colors"
-                  />
-                </div>
-              </div>
-              <div>
-                <label htmlFor="last-name" className="block text-xs font-semibold leading-6 text-gray-900 dark:text-gray-100">
-                  Last name
-                </label>
-                <div className="mt-1">
-                  <input
-                    type="text"
-                    name="last-name"
-                    id="last-name"
-                    autoComplete="family-name"
-                    className="block w-full rounded-md border-0 px-3 py-1.5 text-gray-900 dark:text-white dark:bg-gray-900/50 shadow-sm ring-1 ring-inset ring-gray-300 dark:ring-gray-700 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-[var(--color-champagne-mist-500)] sm:text-sm sm:leading-6 transition-colors"
-                  />
-                </div>
-              </div>
-            </div>
-            <div>
-              <label htmlFor="email" className="block text-xs font-semibold leading-6 text-gray-900 dark:text-gray-100">
-                Email
-              </label>
-              <div className="mt-1">
-                <input
-                  type="email"
-                  name="email"
-                  id="email"
-                  autoComplete="email"
-                  className="block w-full rounded-md border-0 px-3 py-1.5 text-gray-900 dark:text-white dark:bg-gray-900/50 shadow-sm ring-1 ring-inset ring-gray-300 dark:ring-gray-700 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-[var(--color-champagne-mist-500)] sm:text-sm sm:leading-6 transition-colors"
-                />
-              </div>
-            </div>
-            <div>
-              <label htmlFor="message" className="block text-xs font-semibold leading-6 text-gray-900 dark:text-gray-100">
-                Message
-              </label>
-              <div className="mt-1">
-                <textarea
-                  name="message"
-                  id="message"
-                  rows={3}
-                  className="block w-full rounded-md border-0 px-3 py-1.5 text-gray-900 dark:text-white dark:bg-gray-900/50 shadow-sm ring-1 ring-inset ring-gray-300 dark:ring-gray-700 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-[var(--color-champagne-mist-500)] sm:text-sm sm:leading-6 transition-colors"
-                  defaultValue={''}
-                />
-              </div>
-            </div>
-          </div>
-          <div className="mt-8">
-            <button
-              type="submit"
-              className="block w-full rounded-md bg-[var(--color-champagne-mist-600)] px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-[var(--color-champagne-mist-500)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 transition-colors duration-200"
+    <section
+      id="contact"
+      style={{ background: "var(--surface)", padding: "5rem 2rem" }}
+    >
+      <div style={{ maxWidth: "900px", margin: "0 auto" }}>
+        <div style={{ maxWidth: "560px", margin: "0 auto", textAlign: "center" }}>
+          {/* Header */}
+          <motion.div
+            ref={ref}
+            initial={{ opacity: 0, y: 20 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.55 }}
+          >
+            <p
+              style={{
+                fontSize: "0.75rem",
+                letterSpacing: "0.12em",
+                textTransform: "uppercase",
+                color: "var(--accent)",
+                fontWeight: 600,
+                marginBottom: "0.5rem",
+                fontFamily: "'Space Grotesk', sans-serif",
+                textAlign: "center",
+              }}
             >
-              Send now
-            </button>
-          </div>
-        </motion.form>
+              Let&apos;s talk
+            </p>
+            <h2
+              style={{
+                fontFamily: "'Space Grotesk', sans-serif",
+                fontSize: "clamp(1.6rem, 3.5vw, 2.2rem)",
+                fontWeight: 700,
+                letterSpacing: "-0.01em",
+                marginBottom: "0.75rem",
+                color: "var(--text)",
+              }}
+            >
+              Open to the right opportunity
+            </h2>
+            <p
+              style={{
+                color: "var(--text-muted)",
+                fontSize: "1rem",
+                marginBottom: "2rem",
+                lineHeight: 1.7,
+              }}
+            >
+              Whether it&apos;s a mobile engineering role, a KMP project, or
+              just a conversation — I&apos;d like to hear from you.
+            </p>
+          </motion.div>
 
-        {/* Brand and contact email block below the form */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={inView ? { opacity: 1 } : {}}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="mx-auto mt-16 max-w-sm text-center"
-        >
-          <a href="#top" onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }} className="text-xl font-bold tracking-tight text-gray-900 dark:text-gray-50 hover:text-[var(--color-champagne-mist-600)] dark:hover:text-[var(--color-champagne-mist-400)] transition-colors">
-            H.O.S
-          </a>
-          <div className="mt-1 text-sm text-gray-600 dark:text-gray-400">
-            <a href="mailto:hello@hos.dev" className="hover:text-[var(--color-champagne-mist-600)] dark:hover:text-[var(--color-champagne-mist-400)] transition-colors">
-              hello@hos.dev
-            </a>
-          </div>
-        </motion.div>
+          {/* CTA buttons */}
+          <ScrollReveal delay={0.15}>
+            <div
+              style={{
+                display: "flex",
+                gap: "1rem",
+                justifyContent: "center",
+                flexWrap: "wrap",
+              }}
+            >
+              <a
+                href="mailto:habibatsulayman@gmail.com"
+                style={{
+                  background: "var(--accent)",
+                  color: "#fff",
+                  padding: "0.75rem 1.6rem",
+                  borderRadius: "8px",
+                  textDecoration: "none",
+                  fontWeight: 500,
+                  fontSize: "0.95rem",
+                  transition: "background 0.2s, transform 0.15s",
+                  fontFamily: "'Inter', sans-serif",
+                  display: "inline-block",
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.background = "#5850E8";
+                  e.currentTarget.style.transform = "translateY(-1px)";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.background = "var(--accent)";
+                  e.currentTarget.style.transform = "translateY(0)";
+                }}
+              >
+                habibatsulayman@gmail.com
+              </a>
+              <a
+                href="http://linkedin.com/in/sulayman-habibat-olasubomi"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  background: "transparent",
+                  color: "var(--text)",
+                  padding: "0.75rem 1.6rem",
+                  borderRadius: "8px",
+                  textDecoration: "none",
+                  fontWeight: 500,
+                  fontSize: "0.95rem",
+                  border: "1px solid var(--border)",
+                  transition: "border-color 0.2s, color 0.2s",
+                  fontFamily: "'Inter', sans-serif",
+                  display: "inline-block",
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.borderColor = "var(--accent)";
+                  e.currentTarget.style.color = "var(--accent-soft)";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.borderColor = "var(--border)";
+                  e.currentTarget.style.color = "var(--text)";
+                }}
+              >
+                LinkedIn
+              </a>
+            </div>
+          </ScrollReveal>
+
+          {/* Social links */}
+          <ScrollReveal delay={0.25}>
+            <div
+              style={{
+                display: "flex",
+                gap: "1.5rem",
+                justifyContent: "center",
+                flexWrap: "wrap",
+                marginTop: "2.5rem",
+              }}
+            >
+              {socialLinks.map(({ label, href, icon }) => (
+                <a
+                  key={label}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
+                    color: "var(--text-muted)",
+                    textDecoration: "none",
+                    fontSize: "0.85rem",
+                    transition: "color 0.2s",
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "0.4rem",
+                  }}
+                  onMouseEnter={(e) =>
+                    (e.currentTarget.style.color = "var(--accent-soft)")
+                  }
+                  onMouseLeave={(e) =>
+                    (e.currentTarget.style.color = "var(--text-muted)")
+                  }
+                >
+                  {icon}
+                  {label}
+                </a>
+              ))}
+            </div>
+          </ScrollReveal>
+        </div>
       </div>
     </section>
   );

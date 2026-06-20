@@ -1,6 +1,6 @@
 "use client";
-import Link from 'next/link';
-import { useState, useEffect } from 'react';
+import Link from "next/link";
+import { useState, useEffect } from "react";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -8,79 +8,213 @@ export default function Navbar() {
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
-    window.addEventListener('scroll', onScroll, { passive: true });
-    return () => window.removeEventListener('scroll', onScroll);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, targetId: string) => {
+  const handleLinkClick = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    targetId: string
+  ) => {
     e.preventDefault();
-    document.getElementById(targetId)?.scrollIntoView({ behavior: 'smooth' });
+    document.getElementById(targetId)?.scrollIntoView({ behavior: "smooth" });
     setIsOpen(false);
   };
 
-  const linkClass =
-    'relative text-gray-700 dark:text-gray-200 font-medium transition-colors duration-200 after:absolute after:left-0 after:-bottom-0.5 after:h-[2px] after:w-0 after:bg-[var(--color-champagne-mist-500)] after:transition-all after:duration-300 hover:text-[var(--color-champagne-mist-600)] hover:after:w-full dark:hover:text-[var(--color-champagne-mist-400)]';
+  const linkStyle: React.CSSProperties = {
+    color: "var(--text-muted)",
+    fontSize: "0.9rem",
+    textDecoration: "none",
+    transition: "color 0.2s",
+    fontFamily: "'Inter', sans-serif",
+  };
 
   return (
     <nav
-      className={`w-full fixed top-0 left-0 z-50 transition-all duration-300 ${scrolled
-          ? 'bg-white/80 dark:bg-gray-950/80 backdrop-blur-md shadow-sm border-b border-gray-200/60 dark:border-gray-800/60'
-          : 'bg-white/60 dark:bg-gray-950/60 backdrop-blur-sm'
-        }`}
+      style={{
+        position: "fixed",
+        top: 0,
+        left: 0,
+        right: 0,
+        zIndex: 100,
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "space-between",
+        padding: "1rem 2rem",
+        background: scrolled
+          ? "rgba(15, 17, 23, 0.95)"
+          : "rgba(15, 17, 23, 0.85)",
+        backdropFilter: "blur(14px)",
+        WebkitBackdropFilter: "blur(14px)",
+        borderBottom: "1px solid var(--border)",
+        transition: "background 0.3s",
+      }}
     >
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
+      {/* Logo */}
+      <Link
+        href="/"
+        style={{
+          fontFamily: "'Space Grotesk', sans-serif",
+          fontSize: "1.1rem",
+          fontWeight: 700,
+          color: "var(--accent-soft)",
+          textDecoration: "none",
+          letterSpacing: "0.02em",
+        }}
+      >
+        H.O.S
+      </Link>
 
-          {/* Brand */}
-          <h1 className="text-xl font-bold tracking-tight text-gray-900 dark:text-white hover:text-[var(--color-champagne-mist-600)] dark:hover:text-[var(--color-champagne-mist-400)] transition-colors duration-200">
-            <Link href="/">H.O.S</Link>
-          </h1>
-
-          {/* Desktop links */}
-          <div className="hidden md:flex items-center gap-8">
-            <a href="#about" onClick={(e) => handleLinkClick(e, 'about')} className={linkClass}>About</a>
-            <a href="#services" onClick={(e) => handleLinkClick(e, 'services')} className={linkClass}>Services</a>
+      {/* Desktop links */}
+      <ul
+        className="hidden md:flex"
+        style={{ gap: "2rem", listStyle: "none", margin: 0, padding: 0 }}
+      >
+        {[
+          { label: "Experience", id: "experience" },
+          { label: "Projects", id: "projects" },
+          { label: "Skills", id: "skills" },
+          { label: "About", id: "about" },
+        ].map(({ label, id }) => (
+          <li key={id}>
             <a
-              href="#contact"
-              onClick={(e) => handleLinkClick(e, 'contact')}
-              className="rounded-full bg-[var(--color-champagne-mist-600)] text-white text-sm font-semibold px-4 py-1.5 hover:bg-[var(--color-champagne-mist-500)] transition-colors duration-200 shadow-sm"
+              href={`#${id}`}
+              onClick={(e) => handleLinkClick(e, id)}
+              style={linkStyle}
+              onMouseEnter={(e) =>
+                (e.currentTarget.style.color = "var(--text)")
+              }
+              onMouseLeave={(e) =>
+                (e.currentTarget.style.color = "var(--text-muted)")
+              }
             >
-              Contact Me
+              {label}
             </a>
-          </div>
+          </li>
+        ))}
+      </ul>
 
-          {/* Mobile hamburger */}
-          <div className="-mr-2 flex md:hidden">
-            <button
-              onClick={() => setIsOpen(!isOpen)}
-              type="button"
-              className="p-2 rounded-md text-gray-600 dark:text-gray-300 hover:text-[var(--color-champagne-mist-600)] transition-colors"
-              aria-controls="mobile-menu"
-              aria-expanded={isOpen}
-            >
-              <span className="sr-only">Open main menu</span>
-              {!isOpen ? (
-                <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
-                </svg>
-              ) : (
-                <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-                </svg>
-              )}
-            </button>
-          </div>
-        </div>
-      </div>
+      {/* CTA */}
+      <a
+        href="mailto:habibatsulayman@gmail.com"
+        className="hidden md:inline-block"
+        style={{
+          background: "var(--accent)",
+          color: "#fff",
+          padding: "0.45rem 1.1rem",
+          borderRadius: "6px",
+          textDecoration: "none",
+          fontSize: "0.85rem",
+          fontWeight: 500,
+          transition: "opacity 0.2s",
+        }}
+        onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.85")}
+        onMouseLeave={(e) => (e.currentTarget.style.opacity = "1")}
+      >
+        Get in touch
+      </a>
+
+      {/* Mobile hamburger */}
+      <button
+        className="flex md:hidden"
+        onClick={() => setIsOpen(!isOpen)}
+        type="button"
+        aria-controls="mobile-menu"
+        aria-expanded={isOpen}
+        style={{
+          background: "none",
+          border: "none",
+          cursor: "pointer",
+          color: "var(--text-muted)",
+          padding: "0.25rem",
+        }}
+      >
+        <span className="sr-only">Open main menu</span>
+        {!isOpen ? (
+          <svg
+            className="h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            strokeWidth={2}
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M4 6h16M4 12h16M4 18h16"
+            />
+          </svg>
+        ) : (
+          <svg
+            className="h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            strokeWidth={2}
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M6 18L18 6M6 6l12 12"
+            />
+          </svg>
+        )}
+      </button>
 
       {/* Mobile menu */}
       {isOpen && (
-        <div className="md:hidden border-t border-gray-200 dark:border-gray-800" id="mobile-menu">
-          <div className="px-4 pt-3 pb-4 space-y-2">
-            <a href="#about" onClick={(e) => handleLinkClick(e, 'about')} className="block px-3 py-2 text-gray-700 dark:text-gray-200 font-medium rounded-md hover:text-[var(--color-champagne-mist-600)] hover:bg-gray-50 dark:hover:bg-gray-900 transition-colors">About</a>
-            <a href="#services" onClick={(e) => handleLinkClick(e, 'services')} className="block px-3 py-2 text-gray-700 dark:text-gray-200 font-medium rounded-md hover:text-[var(--color-champagne-mist-600)] hover:bg-gray-50 dark:hover:bg-gray-900 transition-colors">Services</a>
-            <a href="#contact" onClick={(e) => handleLinkClick(e, 'contact')} className="block px-3 py-2 text-white bg-[var(--color-champagne-mist-600)] font-semibold rounded-md hover:bg-[var(--color-champagne-mist-500)] transition-colors">Contact Me</a>
-          </div>
+        <div
+          id="mobile-menu"
+          style={{
+            position: "fixed",
+            top: "64px",
+            left: 0,
+            right: 0,
+            background: "var(--surface)",
+            borderBottom: "1px solid var(--border)",
+            padding: "1rem 2rem",
+            display: "flex",
+            flexDirection: "column",
+            gap: "0.75rem",
+          }}
+        >
+          {[
+            { label: "Experience", id: "experience" },
+            { label: "Projects", id: "projects" },
+            { label: "Skills", id: "skills" },
+            { label: "About", id: "about" },
+          ].map(({ label, id }) => (
+            <a
+              key={id}
+              href={`#${id}`}
+              onClick={(e) => handleLinkClick(e, id)}
+              style={{
+                color: "var(--text-muted)",
+                textDecoration: "none",
+                fontSize: "1rem",
+                fontWeight: 500,
+                padding: "0.5rem 0",
+              }}
+            >
+              {label}
+            </a>
+          ))}
+          <a
+            href="mailto:habibatsulayman@gmail.com"
+            style={{
+              background: "var(--accent)",
+              color: "#fff",
+              padding: "0.6rem 1rem",
+              borderRadius: "6px",
+              textDecoration: "none",
+              fontSize: "0.9rem",
+              fontWeight: 600,
+              textAlign: "center",
+              marginTop: "0.25rem",
+            }}
+          >
+            Get in touch
+          </a>
         </div>
       )}
     </nav>

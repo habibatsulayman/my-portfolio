@@ -1,98 +1,174 @@
 "use client";
 
-import React, { useRef } from 'react';
-import Image from 'next/image';
-import { motion, useInView } from 'framer-motion';
-import { SiHtml5, SiCss3, SiJavascript, SiKotlin, SiAndroid } from 'react-icons/si';
-import { FaCode, FaGithub, FaLinkedin, FaTwitter } from 'react-icons/fa';
+import React, { useRef } from "react";
+import { motion, useInView } from "framer-motion";
 
-function ScrollReveal({ children, delay = 0, className }: { children: React.ReactNode; delay?: number; className?: string }) {
+function ScrollReveal({
+  children,
+  delay = 0,
+}: {
+  children: React.ReactNode;
+  delay?: number;
+}) {
   const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: '-60px' });
+  const inView = useInView(ref, { once: true, margin: "-60px" });
   return (
     <motion.div
       ref={ref}
-      initial={{ opacity: 0, y: 30 }}
+      initial={{ opacity: 0, y: 20 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.6, ease: 'easeOut', delay }}
-      className={className}
+      transition={{ duration: 0.55, ease: "easeOut", delay }}
     >
       {children}
     </motion.div>
   );
 }
 
+const details = [
+  { label: "Location", value: "Osun, Nigeria · Open to remote (UK / EU)" },
+  { label: "Current role", value: "Software Engineer, Layer Axis (London)" },
+  { label: "Primary stack", value: "Kotlin · KMP · Jetpack Compose · Ktor" },
+  {
+    label: "Background",
+    value: "BSc Microbiology, University of Ilorin — First in Faculty",
+  },
+  {
+    label: "Interests",
+    value: "Mobile health · Bioinformatics · Infectious disease tech",
+  },
+];
+
 const About: React.FC = () => {
+  const ref = useRef(null);
+  const inView = useInView(ref, { once: true, margin: "-60px" });
+
   return (
-    <section id="about" className="py-20 sm:py-32">
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
+    <section id="about" style={{ padding: "5rem 2rem" }}>
+      <div style={{ maxWidth: "900px", margin: "0 auto" }}>
+        {/* Header */}
+        <motion.div
+          ref={ref}
+          initial={{ opacity: 0, y: 20 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.55 }}
+        >
+          <p
+            style={{
+              fontSize: "0.75rem",
+              letterSpacing: "0.12em",
+              textTransform: "uppercase",
+              color: "var(--accent)",
+              fontWeight: 600,
+              marginBottom: "0.5rem",
+              fontFamily: "'Space Grotesk', sans-serif",
+            }}
+          >
+            Background
+          </p>
+          <h2
+            style={{
+              fontFamily: "'Space Grotesk', sans-serif",
+              fontSize: "clamp(1.6rem, 3.5vw, 2.2rem)",
+              fontWeight: 700,
+              letterSpacing: "-0.01em",
+              marginBottom: "2.5rem",
+              color: "var(--text)",
+            }}
+          >
+            About me
+          </h2>
+        </motion.div>
 
-        <ScrollReveal className="text-center">
-          <h2 className="text-base text-champagne-mist-600 font-semibold leading-7 dark:text-champagne-mist-400">Introduction</h2>
-          <p className="mt-2 text-3xl font-bold tracking-tight text-gray-900 dark:text-gray-50 sm:text-4xl">About me</p>
-        </ScrollReveal>
-
-        <div className="grid grid-cols-1 gap-x-4 lg:gap-x-8 gap-y-16 sm:gap-y-20 lg:grid-cols-2 lg:items-center mt-12">
-
-          {/* Left column: Image */}
-          <ScrollReveal delay={0.1} className="flex items-center justify-center">
-            <div className="relative">
-              <div className="absolute -inset-3 rounded-full bg-[var(--color-champagne-mist-400)]/10 blur-2xl" aria-hidden />
-              <Image
-                src="/projects/my-image.png"
-                alt="Habeebah Olasubomi"
-                width={300}
-                height={300}
-                className="relative rounded-full ring-4 ring-[var(--color-champagne-mist-400)]/20 shadow-xl"
-              />
+        {/* Two-column layout */}
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "1fr 1fr",
+            gap: "3rem",
+            alignItems: "start",
+          }}
+          className="about-grid"
+        >
+          {/* Left — bio text */}
+          <ScrollReveal delay={0.1}>
+            <div
+              style={{
+                color: "var(--text-muted)",
+                fontSize: "0.95rem",
+                lineHeight: 1.8,
+              }}
+            >
+              <p style={{ marginBottom: "1rem" }}>
+                I&apos;m a mobile software engineer based in{" "}
+                <strong style={{ color: "var(--text)" }}>Osun, Nigeria</strong>,
+                currently building a cross-platform AI assistant at{" "}
+                <strong style={{ color: "var(--text)" }}>Layer Axis</strong>, a
+                London-based AI startup. My day-to-day work spans Kotlin
+                Multiplatform, Jetpack Compose, Ktor backends, and Firebase —
+                shipping features end-to-end in a small, fast-moving team.
+              </p>
+              <p>
+                Before software, I studied{" "}
+                <strong style={{ color: "var(--text)" }}>Microbiology</strong>{" "}
+                at the University of Ilorin, graduating top of my faculty. That
+                scientific background shapes how I think about problems —
+                systematically, with attention to edge cases — and it&apos;s the
+                reason I&apos;m drawn to healthtech and bioinformatics as
+                long-term application areas.
+              </p>
             </div>
           </ScrollReveal>
 
-          {/* Right column */}
-          <ScrollReveal delay={0.2} className="px-4 lg:px-0 lg:pr-4 lg:pt-4">
-            <p className="text-md leading-8 text-gray-600 dark:text-gray-300 max-w-xl mb-8">
-              I build interfaces that people enjoy using—on the web and now on Android. With Kotlin and Jetpack Compose, I&apos;m expanding my craft into mobile experiences that are both beautiful and functional.
-            </p>
-            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
-              {/* Tech Stack Card */}
-              <article className="rounded-2xl bg-white shadow-sm ring-1 ring-gray-900/5 p-5 dark:bg-gray-800 dark:ring-white/5 hover:shadow-md transition-shadow duration-200">
-                <h3 className="flex items-center gap-2 text-base font-semibold text-gray-900 dark:text-gray-50 mb-1">
-                  <FaCode className="text-[var(--color-champagne-mist-600)]" />
-                  Tech Stack
-                </h3>
-                <p className="text-sm text-gray-500 dark:text-gray-400 mb-4">Technologies I work with regularly.</p>
-                <div className="flex flex-wrap gap-2">
-                  {[
-                    { icon: <SiHtml5 className="text-orange-600" />, label: 'HTML5' },
-                    { icon: <SiCss3 className="text-blue-600" />, label: 'CSS3' },
-                    { icon: <SiJavascript className="text-yellow-500" />, label: 'JavaScript' },
-                    { icon: <SiKotlin className="text-violet-600" />, label: 'Kotlin' },
-                    { icon: <SiAndroid className="text-green-600" />, label: 'Android' },
-                  ].map(({ icon, label }) => (
-                    <div key={label} title={label} className="flex items-center gap-1.5 px-2.5 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-lg">
-                      {icon}
-                      <span className="text-xs text-gray-600 dark:text-gray-300 font-medium">{label}</span>
-                    </div>
-                  ))}
+          {/* Right — detail cards */}
+          <ScrollReveal delay={0.2}>
+            <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}>
+              {details.map(({ label, value }) => (
+                <div
+                  key={label}
+                  style={{
+                    background: "var(--surface)",
+                    border: "1px solid var(--border)",
+                    borderRadius: "10px",
+                    padding: "1rem 1.25rem",
+                  }}
+                >
+                  <p
+                    style={{
+                      fontSize: "0.72rem",
+                      color: "var(--accent)",
+                      textTransform: "uppercase",
+                      letterSpacing: "0.1em",
+                      fontWeight: 600,
+                      marginBottom: "0.3rem",
+                      fontFamily: "'Space Grotesk', sans-serif",
+                    }}
+                  >
+                    {label}
+                  </p>
+                  <p
+                    style={{
+                      fontSize: "0.88rem",
+                      color: "var(--text)",
+                      fontFamily: "'Space Grotesk', sans-serif",
+                    }}
+                  >
+                    {value}
+                  </p>
                 </div>
-
-                <h4 className="mt-5 text-base font-semibold text-gray-900 dark:text-gray-50">Socials</h4>
-                <div className="mt-2 flex items-center gap-4">
-                  <a href="https://github.com/habibatsulayman" target="_blank" rel="noopener noreferrer" aria-label="GitHub" className="text-gray-500 dark:text-gray-400 hover:text-[var(--color-champagne-mist-600)] dark:hover:text-[var(--color-champagne-mist-400)] transition-colors text-xl">
-                    <FaGithub />
-                  </a>
-                  <a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="text-gray-500 dark:text-gray-400 hover:text-[var(--color-champagne-mist-600)] dark:hover:text-[var(--color-champagne-mist-400)] transition-colors text-xl">
-                    <FaLinkedin />
-                  </a>
-                  <a href="https://twitter.com/" target="_blank" rel="noopener noreferrer" aria-label="Twitter" className="text-gray-500 dark:text-gray-400 hover:text-[var(--color-champagne-mist-600)] dark:hover:text-[var(--color-champagne-mist-400)] transition-colors text-xl">
-                    <FaTwitter />
-                  </a>
-                </div>
-              </article>
+              ))}
             </div>
           </ScrollReveal>
         </div>
       </div>
+
+      <style>{`
+        @media (max-width: 680px) {
+          .about-grid {
+            grid-template-columns: 1fr !important;
+            gap: 1.5rem !important;
+          }
+        }
+      `}</style>
     </section>
   );
 };

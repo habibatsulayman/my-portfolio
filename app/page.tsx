@@ -1,19 +1,27 @@
 import About from "@/components/about";
 import Contact from "@/components/contact";
+import Experience from "@/components/experience";
 import Footer from "@/components/footer";
 import Hero from "@/components/hero";
 import Projects from "@/components/projects";
-import Services from "@/components/services";
-import StatsStrip from "@/components/stats-strip";
+import Skills from "@/components/skills";
+
+function Divider() {
+  return <div className="section-divider" />;
+}
 
 export default function Home() {
   return (
-    <div className="font-sans dark:bg-black">
+    <div>
       <Hero />
-      <StatsStrip />
-      <About />
-      <Services />
+      <Experience />
+      <Divider />
       <Projects />
+      <Divider />
+      <Skills />
+      <Divider />
+      <About />
+      <Divider />
       <Contact />
       <Footer />
     </div>
