@@ -7,11 +7,10 @@ const phrases = [
   "Android / KMP Engineer",
   "Kotlin Multiplatform · Android · iOS",
   "Clean Architecture · MVVM · SQLDelight",
-  "Building AssistantX @ Layer Axis",
 ];
 
 const stats = [
-  { num: "1", suffix: "+", label: "Year at Layer Axis" },
+  { num: "1", suffix: "+", label: "Year of professional experience" },
   { num: "2", suffix: "", label: "Platforms (Android · iOS)" },
   { num: "1", suffix: "", label: "Live Play Store app" },
   { num: "6", suffix: "", label: "Languages localised" },
@@ -192,8 +191,8 @@ export default function Hero() {
         I build cross-platform mobile apps with{" "}
         <strong style={{ color: "var(--text)" }}>Kotlin Multiplatform</strong> —
         from shared business logic to native UI, backend integrations, and Play
-        Store deployment. Currently shipping an AI assistant at{" "}
-        <strong style={{ color: "var(--text)" }}>Layer Axis</strong>, London.
+        Store deployment. I&apos;ve shipped production features across Android and iOS,
+        working with teams in the UK and contributing to live apps.
       </motion.p>
 
       {/* CTAs */}

@@ -26,7 +26,7 @@ function ScrollReveal({
 
 const details = [
   { label: "Location", value: "Osun, Nigeria · Open to remote (UK / EU)" },
-  { label: "Current role", value: "Software Engineer, Layer Axis (London)" },
+  { label: "Experience", value: "Mobile Engineer · Kotlin · KMP · Android · iOS" },
   { label: "Primary stack", value: "Kotlin · KMP · Jetpack Compose · Ktor" },
   {
     label: "Background",
@@ -101,11 +101,12 @@ const About: React.FC = () => {
               <p style={{ marginBottom: "1rem" }}>
                 I&apos;m a mobile software engineer based in{" "}
                 <strong style={{ color: "var(--text)" }}>Osun, Nigeria</strong>,
-                currently building a cross-platform AI assistant at{" "}
-                <strong style={{ color: "var(--text)" }}>Layer Axis</strong>, a
-                London-based AI startup. My day-to-day work spans Kotlin
-                Multiplatform, Jetpack Compose, Ktor backends, and Firebase —
-                shipping features end-to-end in a small, fast-moving team.
+                with experience building cross-platform Android and iOS apps
+                using Kotlin Multiplatform. I&apos;ve worked with reputable
+                companies in the{" "}
+                <strong style={{ color: "var(--text)" }}>UK</strong>, shipping
+                production-grade features end-to-end — from architecture
+                through backend integrations to Play Store deployment.
               </p>
               <p>
                 Before software, I studied{" "}
