@@ -28,14 +28,6 @@ const details = [
   { label: "Location", value: "Osun, Nigeria · Open to remote (UK / EU)" },
   { label: "Experience", value: "Mobile Engineer · Kotlin · KMP · Android · iOS" },
   { label: "Primary stack", value: "Kotlin · KMP · Jetpack Compose · Ktor" },
-  {
-    label: "Background",
-    value: "BSc Microbiology, University of Ilorin — First in Faculty",
-  },
-  {
-    label: "Interests",
-    value: "Mobile health · Bioinformatics · Infectious disease tech",
-  },
 ];
 
 const About: React.FC = () => {
