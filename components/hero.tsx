@@ -45,8 +45,10 @@ export default function Hero() {
           setCharIndex((c) => c - 1);
         }, 35);
       } else {
-        setDeleting(false);
-        setPhraseIndex((p) => (p + 1) % phrases.length);
+        timeout = setTimeout(() => {
+          setDeleting(false);
+          setPhraseIndex((p) => (p + 1) % phrases.length);
+        }, 0);
       }
     }
 
@@ -67,6 +69,7 @@ export default function Hero() {
         maxWidth: "820px",
         margin: "0 auto",
         position: "relative",
+        overflowX: "hidden",
       }}
     >
       {/* Subtle background glow */}
@@ -77,8 +80,8 @@ export default function Hero() {
           top: "30%",
           left: "50%",
           transform: "translate(-50%, -50%)",
-          width: "500px",
-          height: "500px",
+          width: "min(500px, 100vw)",
+          height: "min(500px, 100vw)",
           borderRadius: "50%",
           background:
             "radial-gradient(circle, rgba(108,99,255,0.12) 0%, transparent 70%)",

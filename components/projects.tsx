@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useRef } from "react";
+import Image from "next/image";
 import { motion, useInView } from "framer-motion";
 
 function ScrollReveal({
@@ -31,6 +32,7 @@ interface Project {
   emoji: string;
   image?: string;
   imageFit?: "cover" | "portrait"; // cover = web screenshot, portrait = phone screenshot
+  imagePosition?: string; // override object-position per project, default "top center"
   badge?: Badge;
   description: string;
   tags: string[];
@@ -41,7 +43,7 @@ const mainProjects: Project[] = [
   {
     name: "AssistantX",
     emoji: "🤖",
-    image: "/projects/assistantx.jpg",
+    image: "/projects/AssistantX_Homescreen.PNG",
     imageFit: "portrait",
     badge: { label: "Pre-launch", type: "pre" },
     description:
@@ -52,8 +54,9 @@ const mainProjects: Project[] = [
   {
     name: "Duplicate Contacts Remover",
     emoji: "📇",
-    image: "/projects/duplicate-contacts.PNG",
+    image: "/projects/duplicate_contacts.png",
     imageFit: "portrait",
+    imagePosition: "center",
     badge: { label: "Live", type: "live" },
     description:
       "Production Android app that detects and merges duplicate contacts — built by Layer Axis. I contributed full internationalisation across 6 languages including Arabic's complex 6-form plural system.",
@@ -72,7 +75,7 @@ const mainProjects: Project[] = [
   {
     name: "Spendly",
     emoji: "💸",
-    image: "/projects/spendly-homepage.png",
+    image: "/projects/spendly_homepage.png",
     imageFit: "portrait",
     badge: { label: "Personal Project", type: "personal" },
     description:
@@ -160,27 +163,22 @@ function ProjectCard({ project, delay }: { project: Project; delay: number }) {
             <div
               style={{
                 width: "100%",
-                height: "240px",
+                height: "280px",
                 background: "#0a0a0f",
                 borderBottom: "1px solid var(--border)",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
                 overflow: "hidden",
-                padding: "12px 0",
+                position: "relative",
               }}
             >
-              <img
+              <Image
                 src={project.image}
                 alt={project.name}
+                fill
                 style={{
-                  height: "100%",
-                  width: "auto",
-                  maxWidth: "100%",
-                  objectFit: "contain",
-                  borderRadius: "8px",
-                  display: "block",
+                  objectFit: "cover",
+                  objectPosition: project.imagePosition ?? "top center",
                 }}
+                sizes="(max-width: 768px) 100vw, 400px"
               />
             </div>
           ) : (
@@ -192,18 +190,18 @@ function ProjectCard({ project, delay }: { project: Project; delay: number }) {
                 overflow: "hidden",
                 borderBottom: "1px solid var(--border)",
                 background: "var(--surface-2)",
+                position: "relative",
               }}
             >
-              <img
+              <Image
                 src={project.image}
                 alt={project.name}
+                fill
                 style={{
-                  width: "100%",
-                  height: "100%",
                   objectFit: "cover",
                   objectPosition: "top",
-                  display: "block",
                 }}
+                sizes="(max-width: 768px) 100vw, 400px"
               />
             </div>
           )
@@ -467,17 +465,18 @@ export default function Projects() {
                             overflow: "hidden",
                             border: "1px solid var(--border)",
                             flexShrink: 0,
+                            position: "relative",
                           }}
                         >
-                          <img
+                          <Image
                             src={project.image}
                             alt={project.name}
+                            fill
                             style={{
-                              width: "100%",
-                              height: "100%",
                               objectFit: "cover",
                               objectPosition: "top",
                             }}
+                            sizes="56px"
                           />
                         </div>
                       ) : (

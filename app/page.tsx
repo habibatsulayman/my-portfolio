@@ -12,7 +12,7 @@ function Divider() {
 
 export default function Home() {
   return (
-    <div>
+    <div style={{ overflowX: "hidden", width: "100%" }}>
       <Hero />
       <Experience />
       <Divider />
