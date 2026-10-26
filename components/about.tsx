@@ -26,16 +26,12 @@ function ScrollReveal({
 
 const details = [
   {
-    label: "Education",
-    value: "BSc Microbiology · University of Ilorin · First in Faculty",
+    label: "Location",
+    value: "Nigeria · Open to remote roles (Worldwide)",
   },
   {
-    label: "Open to",
-    value: "Remote roles (Worldwide)",
-  },
-  {
-    label: "Interests",
-    value: "Mobile health, bioinformatics, infectious disease tech",
+    label: "Core Stack",
+    value: "Kotlin · KMP · Jetpack Compose · Ktor · SQLDelight",
   },
 ];
 
@@ -79,7 +75,7 @@ const About: React.FC = () => {
               color: "var(--text)",
             }}
           >
-            From microbiology to mobile
+            About me
           </h2>
         </motion.div>
 
@@ -93,7 +89,7 @@ const About: React.FC = () => {
           }}
           className="about-grid"
         >
-          {/* Left — bio text */}
+          {/* Left — concise bio text */}
           <ScrollReveal delay={0.1}>
             <div
               style={{
@@ -102,20 +98,24 @@ const About: React.FC = () => {
                 lineHeight: 1.8,
               }}
             >
-              <p style={{ marginBottom: "1.1rem" }}>
+              <p style={{ margin: 0 }}>
                 I&apos;m a mobile software engineer based in{" "}
-                <strong style={{ color: "var(--text)" }}>Osun, Nigeria</strong>.
-                I build Android and iOS apps with Kotlin Multiplatform and ship
-                production features end-to-end — from architecture and backend
-                integrations to store release.
-              </p>
-              <p>
-                Before software, I studied{" "}
-                <strong style={{ color: "var(--text)" }}>Microbiology</strong>{" "}
-                at the University of Ilorin and graduated top of my faculty.
-                That background shapes how I work: systematically, with
-                attention to edge cases. It&apos;s also why I&apos;m drawn to
-                healthtech and bioinformatics.
+                <strong style={{ color: "var(--text)" }}>Nigeria</strong>,
+                building cross-platform{" "}
+                <strong style={{ color: "var(--text)" }}>
+                  Android and iOS
+                </strong>{" "}
+                apps with{" "}
+                <strong style={{ color: "var(--text)" }}>
+                  Kotlin Multiplatform
+                </strong>{" "}
+                and{" "}
+                <strong style={{ color: "var(--text)" }}>
+                  Jetpack Compose
+                </strong>
+                . I care about clean architecture, reliable local persistence,
+                and shipping well-tested features end-to-end from UI to store
+                release.
               </p>
             </div>
           </ScrollReveal>

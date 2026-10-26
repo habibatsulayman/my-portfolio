@@ -151,7 +151,7 @@ export default function Hero() {
           .hero-section {
             min-height: auto !important;
             justify-content: flex-start !important;
-            padding: 2.5rem 1.5rem 4rem !important;
+            padding: 4.5rem 1.5rem 4rem !important;
           }
         }
       `}</style>
