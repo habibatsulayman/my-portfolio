@@ -26,42 +26,35 @@ function ScrollReveal({
 
 const skillGroups = [
   {
-    label: "Mobile · KMP",
+    label: "Mobile",
     chips: [
       "Kotlin",
-      "Kotlin Multiplatform",
+      "KMP",
       "Jetpack Compose",
       "Android SDK",
-      "iOS (shared KMP)",
+      "Metro DI",
       "Clean Architecture",
-      "MVVM + StateFlow",
+      "MVVM",
     ],
   },
   {
-    label: "Data · Backend",
+    label: "Data & backend",
     chips: [
       "SQLDelight",
       "Ktor",
       "Firebase",
       "RevenueCat",
       "PostgreSQL",
-      "REST APIs",
+      "REST",
     ],
   },
   {
-    label: "Testing · Tooling",
-    chips: [
-      "MockK",
-      "JUnit",
-      "UnconfinedTestDispatcher",
-      "Git · GitHub",
-      "Gradle",
-      "BuildKonfig",
-    ],
+    label: "Testing & tools",
+    chips: ["MockK", "JUnit", "Git", "Gradle", "BuildKonfig"],
   },
   {
     label: "Web",
-    chips: ["HTML5", "CSS3", "JavaScript", "TypeScript", "React", "Next.js"],
+    chips: ["HTML", "CSS", "JavaScript", "TypeScript", "React", "Next.js"],
   },
 ];
 
@@ -87,36 +80,26 @@ export default function Skills() {
               fontSize: "0.75rem",
               letterSpacing: "0.12em",
               textTransform: "uppercase",
-              color: "var(--accent)",
+              color: "var(--accent-soft)",
               fontWeight: 600,
               marginBottom: "0.5rem",
-              fontFamily: "'Space Grotesk', sans-serif",
+              fontFamily: "'Plus Jakarta Sans', sans-serif",
             }}
           >
             Stack
           </p>
           <h2
             style={{
-              fontFamily: "'Space Grotesk', sans-serif",
+              fontFamily: "'Plus Jakarta Sans', sans-serif",
               fontSize: "clamp(1.6rem, 3.5vw, 2.2rem)",
               fontWeight: 700,
               letterSpacing: "-0.01em",
-              marginBottom: "0.75rem",
+              marginBottom: "2.5rem",
               color: "var(--text)",
             }}
           >
-            Technologies
+            Skills
           </h2>
-          <p
-            style={{
-              color: "var(--text-muted)",
-              fontSize: "1rem",
-              maxWidth: "520px",
-              marginBottom: "3rem",
-            }}
-          >
-            Tools I work with daily and reach for confidently.
-          </p>
         </motion.div>
 
         {/* Skills grid */}
@@ -137,6 +120,7 @@ export default function Skills() {
                   borderRadius: "12px",
                   padding: "1.4rem",
                   transition: "border-color 0.2s",
+                  height: "100%",
                 }}
                 onMouseEnter={(e) =>
                   (e.currentTarget.style.borderColor = "var(--accent)")
@@ -145,33 +129,35 @@ export default function Skills() {
                   (e.currentTarget.style.borderColor = "var(--border)")
                 }
               >
-                <p
+                <h3
                   style={{
-                    fontSize: "0.72rem",
+                    fontSize: "0.75rem",
                     letterSpacing: "0.1em",
                     textTransform: "uppercase",
-                    color: "var(--accent)",
+                    color: "var(--accent-soft)",
                     fontWeight: 600,
                     marginBottom: "1rem",
-                    fontFamily: "'Space Grotesk', sans-serif",
+                    fontFamily: "'Plus Jakarta Sans', sans-serif",
+                    marginTop: 0,
                   }}
                 >
                   {group.label}
-                </p>
+                </h3>
                 <div
-                  style={{ display: "flex", flexWrap: "wrap", gap: "0.4rem" }}
+                  style={{ display: "flex", flexWrap: "wrap", gap: "0.45rem" }}
                 >
                   {group.chips.map((chip) => (
                     <span
                       key={chip}
                       style={{
-                        fontSize: "0.8rem",
+                        fontSize: "0.82rem",
                         padding: "0.3rem 0.75rem",
                         borderRadius: "20px",
                         background: "var(--surface-2)",
                         border: "1px solid var(--border)",
                         color: "var(--text)",
-                        fontFamily: "'Space Grotesk', sans-serif",
+                        fontFamily: "'Plus Jakarta Sans', sans-serif",
+                        fontWeight: 500,
                       }}
                     >
                       {chip}

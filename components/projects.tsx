@@ -31,8 +31,8 @@ interface Project {
   name: string;
   emoji: string;
   image?: string;
-  imageFit?: "cover" | "portrait"; // cover = web screenshot, portrait = phone screenshot
-  imagePosition?: string; // override object-position per project, default "top center"
+  imageFit?: "cover" | "portrait";
+  imagePosition?: string;
   badge?: Badge;
   description: string;
   tags: string[];
@@ -41,15 +41,15 @@ interface Project {
 
 const mainProjects: Project[] = [
   {
-    name: "AssistantX",
+    name: "Rova",
     emoji: "🤖",
     image: "/projects/AssistantX_Homescreen.PNG",
     imageFit: "portrait",
-    badge: { label: "Pre-launch", type: "pre" },
+    badge: { label: "Live", type: "live" },
     description:
-      "Cross-platform AI assistant app for Android and iOS built in Kotlin Multiplatform at Layer Axis. I contributed key features including real-time chat search, theme customisation, settings infrastructure, and a GDPR-compliant account deletion flow.",
-    tags: ["KMP", "Compose", "SQLDelight", "Firebase"],
-    links: [{ label: "Website ↗", href: "https://getassistant.app" }],
+      "Cross-platform AI assistant for Android and iOS, built in Kotlin Multiplatform at Layer Axis, now on Google Play and the App Store. I built real-time chat history search, custom instructions, cross-platform in-app reviews, the settings screen with a Light / Dark / System theme selector, legal links, and clear chat history.",
+    tags: ["KMP", "Compose", "SQLDelight", "Firebase", "RevenueCat"],
+    links: [{ label: "Website ↗", href: "https://rovaai.app" }],
   },
   {
     name: "Duplicate Contacts Remover",
@@ -59,7 +59,7 @@ const mainProjects: Project[] = [
     imagePosition: "center",
     badge: { label: "Live", type: "live" },
     description:
-      "Production Android app that detects and merges duplicate contacts — built by Layer Axis. I contributed full internationalisation across 6 languages including Arabic's complex 6-form plural system.",
+      "Production Android app that finds and merges duplicate contacts. I took it from English-only to 6 languages, including Arabic’s six-form plural system, and added the Play In-App Review flow.",
     tags: ["Android", "Kotlin", "i18n"],
     links: [
       {
@@ -79,8 +79,8 @@ const mainProjects: Project[] = [
     imageFit: "portrait",
     badge: { label: "Personal Project", type: "personal" },
     description:
-      "Android expense tracking app built from scratch with Kotlin and Jetpack Compose. Log, categorise, and review daily spending with a clean Material 3 interface.",
-    tags: ["Kotlin", "Compose", "Android"],
+      "Android expense tracker built from scratch with Kotlin and Jetpack Compose. Log, categorise and review daily spending in a Material 3 interface.",
+    tags: ["Kotlin", "Compose"],
     links: [
       {
         label: "GitHub ↗",
@@ -94,8 +94,8 @@ const mainProjects: Project[] = [
     image: "/projects/smart-chef.png",
     badge: { label: "Personal Project", type: "personal" },
     description:
-      "AI-powered recipe suggester — enter ingredients you have, get tailored recipe ideas. Built with web technologies and integrated with an AI model API.",
-    tags: ["JavaScript", "AI API", "Web"],
+      "AI recipe suggester: enter the ingredients you have and get tailored recipe ideas.",
+    tags: ["JavaScript", "AI API"],
     links: [
       {
         label: "Live demo ↗",
@@ -109,31 +109,16 @@ const mainProjects: Project[] = [
   },
 ];
 
-const funProjects: Project[] = [
-  {
-    name: "Tip Calculator",
-    emoji: "🧮",
-    image: "/projects/tip-calculator.jpg",
-    description:
-      "A clean, interactive tip calculator. Enter your bill, choose a tip percentage, and split it across the table — built for fun with plain HTML, CSS, and JavaScript.",
-    tags: ["HTML", "CSS", "JavaScript"],
-    links: [
-      {
-        label: "Live demo ↗",
-        href: "https://tipcalcbyhabeebah.netlify.app",
-      },
-    ],
-  },
-];
-
 const badgeStyles: Record<string, React.CSSProperties> = {
-  live: { background: "rgba(74,222,128,0.15)", color: "var(--green)" },
+  live: { background: "var(--green-bg)", color: "var(--green)" },
   pre: { background: "var(--accent-glow)", color: "var(--accent-soft)" },
-  personal: { background: "rgba(255,255,255,0.06)", color: "var(--text-muted)" },
+  personal: {
+    background: "var(--surface-2)",
+    color: "var(--text-muted)",
+  },
 };
 
 function ProjectCard({ project, delay }: { project: Project; delay: number }) {
-
   return (
     <ScrollReveal delay={delay}>
       <div
@@ -159,12 +144,11 @@ function ProjectCard({ project, delay }: { project: Project; delay: number }) {
         {/* Project header image or emoji fallback */}
         {project.image ? (
           project.imageFit === "portrait" ? (
-            // Portrait phone screenshot — show full image in a dark framed container
             <div
               style={{
                 width: "100%",
                 height: "280px",
-                background: "#0a0a0f",
+                background: "#141414",
                 borderBottom: "1px solid var(--border)",
                 overflow: "hidden",
                 position: "relative",
@@ -182,7 +166,6 @@ function ProjectCard({ project, delay }: { project: Project; delay: number }) {
               />
             </div>
           ) : (
-            // Landscape web screenshot — fill the box
             <div
               style={{
                 width: "100%",
@@ -242,9 +225,9 @@ function ProjectCard({ project, delay }: { project: Project; delay: number }) {
           >
             <span
               style={{
-                fontFamily: "'Space Grotesk', sans-serif",
+                fontFamily: "'Plus Jakarta Sans', sans-serif",
                 fontWeight: 600,
-                fontSize: "1rem",
+                fontSize: "1.05rem",
                 color: "var(--text)",
               }}
             >
@@ -283,7 +266,12 @@ function ProjectCard({ project, delay }: { project: Project; delay: number }) {
 
           {/* Tags */}
           <div
-            style={{ display: "flex", flexWrap: "wrap", gap: "0.4rem", marginBottom: "1rem" }}
+            style={{
+              display: "flex",
+              flexWrap: "wrap",
+              gap: "0.4rem",
+              marginBottom: "1rem",
+            }}
           >
             {project.tags.map((tag) => (
               <span
@@ -293,9 +281,9 @@ function ProjectCard({ project, delay }: { project: Project; delay: number }) {
                   padding: "0.25rem 0.65rem",
                   borderRadius: "6px",
                   background: "var(--surface-2)",
-                  color: "var(--text-muted)",
+                  color: "var(--text)",
                   border: "1px solid var(--border)",
-                  fontFamily: "'Space Grotesk', sans-serif",
+                  fontFamily: "'Plus Jakarta Sans', sans-serif",
                   fontWeight: 500,
                 }}
               >
@@ -305,7 +293,7 @@ function ProjectCard({ project, delay }: { project: Project; delay: number }) {
           </div>
 
           {/* Links */}
-          <div style={{ display: "flex", gap: "0.75rem", marginTop: "auto" }}>
+          <div style={{ display: "flex", gap: "0.9rem", marginTop: "auto" }}>
             {project.links.map((link) => (
               <a
                 key={link.label}
@@ -313,8 +301,8 @@ function ProjectCard({ project, delay }: { project: Project; delay: number }) {
                 target="_blank"
                 rel="noopener noreferrer"
                 style={{
-                  fontSize: "0.8rem",
-                  fontWeight: 500,
+                  fontSize: "0.82rem",
+                  fontWeight: 600,
                   color: "var(--accent-soft)",
                   textDecoration: "none",
                   transition: "color 0.2s",
@@ -341,7 +329,7 @@ export default function Projects() {
   const inView = useInView(ref, { once: true, margin: "-60px" });
 
   return (
-    <section id="projects" style={{ padding: "5rem 2rem" }}>
+    <section id="work" style={{ padding: "5rem 2rem" }}>
       <div style={{ maxWidth: "900px", margin: "0 auto" }}>
         {/* Header */}
         <motion.div
@@ -355,36 +343,26 @@ export default function Projects() {
               fontSize: "0.75rem",
               letterSpacing: "0.12em",
               textTransform: "uppercase",
-              color: "var(--accent)",
+              color: "var(--accent-soft)",
               fontWeight: 600,
               marginBottom: "0.5rem",
-              fontFamily: "'Space Grotesk', sans-serif",
+              fontFamily: "'Plus Jakarta Sans', sans-serif",
             }}
           >
-            Work
+            Selected work
           </p>
           <h2
             style={{
-              fontFamily: "'Space Grotesk', sans-serif",
+              fontFamily: "'Plus Jakarta Sans', sans-serif",
               fontSize: "clamp(1.6rem, 3.5vw, 2.2rem)",
               fontWeight: 700,
               letterSpacing: "-0.01em",
-              marginBottom: "0.75rem",
+              marginBottom: "2.5rem",
               color: "var(--text)",
             }}
           >
-            Projects
+            Things I&apos;ve built
           </h2>
-          <p
-            style={{
-              color: "var(--text-muted)",
-              fontSize: "1rem",
-              maxWidth: "520px",
-              marginBottom: "3rem",
-            }}
-          >
-            A selection of things I&apos;ve built — personal and professional.
-          </p>
         </motion.div>
 
         {/* Main projects grid */}
@@ -393,7 +371,7 @@ export default function Projects() {
             display: "grid",
             gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))",
             gap: "1.25rem",
-            marginBottom: "4rem",
+            marginBottom: "2.5rem",
           }}
         >
           {mainProjects.map((project, i) => (
@@ -401,159 +379,60 @@ export default function Projects() {
           ))}
         </div>
 
-        {/* Fun Projects sub-section */}
+        {/* Playground line */}
         <ScrollReveal delay={0.1}>
           <div
             style={{
-              borderTop: "1px solid var(--border)",
-              paddingTop: "2.5rem",
+              background: "var(--surface)",
+              border: "1px solid var(--border)",
+              borderRadius: "10px",
+              padding: "1rem 1.4rem",
+              display: "flex",
+              alignItems: "center",
+              gap: "0.9rem",
+              flexWrap: "wrap",
+              fontSize: "0.92rem",
+              color: "var(--text-muted)",
             }}
           >
-            <p
+            <div
               style={{
-                fontSize: "0.75rem",
-                letterSpacing: "0.12em",
-                textTransform: "uppercase",
-                color: "var(--accent)",
-                fontWeight: 600,
-                marginBottom: "0.4rem",
-                fontFamily: "'Space Grotesk', sans-serif",
+                width: "36px",
+                height: "36px",
+                borderRadius: "6px",
+                overflow: "hidden",
+                border: "1px solid var(--border)",
+                flexShrink: 0,
+                position: "relative",
               }}
             >
-              Built for fun
-            </p>
-            <p
-              style={{
-                color: "var(--text-muted)",
-                fontSize: "0.9rem",
-                marginBottom: "1.5rem",
-              }}
-            >
-              Side experiments and smaller builds I&apos;ve shipped for the joy of shipping.
-            </p>
-
-            <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}>
-              {funProjects.map((project) => (
-                <ScrollReveal key={project.name} delay={0.1}>
-                  <div
-                    style={{
-                      background: "var(--surface)",
-                      border: "1px solid var(--border)",
-                      borderRadius: "10px",
-                      padding: "1.2rem 1.5rem",
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "space-between",
-                      gap: "1rem",
-                      flexWrap: "wrap",
-                      transition: "border-color 0.2s",
-                    }}
-                    onMouseEnter={(e) =>
-                      (e.currentTarget.style.borderColor = "var(--accent)")
-                    }
-                    onMouseLeave={(e) =>
-                      (e.currentTarget.style.borderColor = "var(--border)")
-                    }
-                  >
-                    <div style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
-                      {project.image ? (
-                        <div
-                          style={{
-                            width: "56px",
-                            height: "56px",
-                            borderRadius: "8px",
-                            overflow: "hidden",
-                            border: "1px solid var(--border)",
-                            flexShrink: 0,
-                            position: "relative",
-                          }}
-                        >
-                          <Image
-                            src={project.image}
-                            alt={project.name}
-                            fill
-                            style={{
-                              objectFit: "cover",
-                              objectPosition: "top",
-                            }}
-                            sizes="56px"
-                          />
-                        </div>
-                      ) : (
-                        <span style={{ fontSize: "1.6rem" }}>{project.emoji}</span>
-                      )}
-                      <div>
-                        <div
-                          style={{
-                            fontFamily: "'Space Grotesk', sans-serif",
-                            fontWeight: 600,
-                            fontSize: "0.95rem",
-                            color: "var(--text)",
-                            marginBottom: "0.2rem",
-                          }}
-                        >
-                          {project.name}
-                        </div>
-                        <p
-                          style={{
-                            color: "var(--text-muted)",
-                            fontSize: "0.82rem",
-                            lineHeight: 1.5,
-                            maxWidth: "420px",
-                          }}
-                        >
-                          {project.description}
-                        </p>
-                      </div>
-                    </div>
-                    <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem", alignItems: "flex-end" }}>
-                      <div style={{ display: "flex", flexWrap: "wrap", gap: "0.35rem", justifyContent: "flex-end" }}>
-                        {project.tags.map((tag) => (
-                          <span
-                            key={tag}
-                            style={{
-                              fontSize: "0.7rem",
-                              padding: "0.2rem 0.55rem",
-                              borderRadius: "6px",
-                              background: "var(--surface-2)",
-                              color: "var(--text-muted)",
-                              border: "1px solid var(--border)",
-                              fontFamily: "'Space Grotesk', sans-serif",
-                            }}
-                          >
-                            {tag}
-                          </span>
-                        ))}
-                      </div>
-                      {project.links.map((link) => (
-                        <a
-                          key={link.label}
-                          href={link.href}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          style={{
-                            fontSize: "0.8rem",
-                            fontWeight: 500,
-                            color: "var(--accent-soft)",
-                            textDecoration: "none",
-                            transition: "color 0.2s",
-                            whiteSpace: "nowrap",
-                          }}
-                          onMouseEnter={(e) =>
-                            (e.currentTarget.style.color = "var(--text)")
-                          }
-                          onMouseLeave={(e) =>
-                            (e.currentTarget.style.color = "var(--accent-soft)")
-                          }
-                        >
-                          {link.label}
-                        </a>
-                      ))}
-                    </div>
-                  </div>
-                </ScrollReveal>
-              ))}
+              <Image
+                src="/projects/tip-calculator.jpg"
+                alt="Tip Calculator"
+                fill
+                style={{
+                  objectFit: "cover",
+                  objectPosition: "top",
+                }}
+                sizes="36px"
+              />
             </div>
+            <p style={{ margin: 0 }}>
+              <strong style={{ color: "var(--text)" }}>Playground:</strong>{" "}
+              <a
+                href="https://tipcalcbyhabeebah.netlify.app"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  color: "var(--accent-soft)",
+                  fontWeight: 600,
+                  textDecoration: "none",
+                }}
+              >
+                Tip Calculator ↗
+              </a>
+              , a small HTML/CSS/JS build made for fun.
+            </p>
           </div>
         </ScrollReveal>
       </div>

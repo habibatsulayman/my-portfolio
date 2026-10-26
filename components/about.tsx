@@ -25,16 +25,17 @@ function ScrollReveal({
 }
 
 const details = [
-  { label: "Location", value: "Osun, Nigeria · Open to remote (UK / EU)" },
-  { label: "Experience", value: "Mobile Engineer · Kotlin · KMP · Android · iOS" },
-  { label: "Primary stack", value: "Kotlin · KMP · Jetpack Compose · Ktor" },
   {
-    label: "Background",
-    value: "BSc Microbiology, University of Ilorin — First in Faculty",
+    label: "Education",
+    value: "BSc Microbiology · University of Ilorin · First in Faculty",
+  },
+  {
+    label: "Open to",
+    value: "Remote roles (Worldwide)",
   },
   {
     label: "Interests",
-    value: "Mobile health · Bioinformatics · Infectious disease tech",
+    value: "Mobile health, bioinformatics, infectious disease tech",
   },
 ];
 
@@ -43,7 +44,10 @@ const About: React.FC = () => {
   const inView = useInView(ref, { once: true, margin: "-60px" });
 
   return (
-    <section id="about" style={{ padding: "5rem 2rem" }}>
+    <section
+      id="about"
+      style={{ background: "var(--surface)", padding: "5rem 2rem" }}
+    >
       <div style={{ maxWidth: "900px", margin: "0 auto" }}>
         {/* Header */}
         <motion.div
@@ -57,25 +61,25 @@ const About: React.FC = () => {
               fontSize: "0.75rem",
               letterSpacing: "0.12em",
               textTransform: "uppercase",
-              color: "var(--accent)",
+              color: "var(--accent-soft)",
               fontWeight: 600,
               marginBottom: "0.5rem",
-              fontFamily: "'Space Grotesk', sans-serif",
+              fontFamily: "'Plus Jakarta Sans', sans-serif",
             }}
           >
-            Background
+            About
           </p>
           <h2
             style={{
-              fontFamily: "'Space Grotesk', sans-serif",
+              fontFamily: "'Plus Jakarta Sans', sans-serif",
               fontSize: "clamp(1.6rem, 3.5vw, 2.2rem)",
               fontWeight: 700,
               letterSpacing: "-0.01em",
-              marginBottom: "2.5rem",
+              marginBottom: "2.2rem",
               color: "var(--text)",
             }}
           >
-            About me
+            From microbiology to mobile
           </h2>
         </motion.div>
 
@@ -83,8 +87,8 @@ const About: React.FC = () => {
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: "1fr 1fr",
-            gap: "3rem",
+            gridTemplateColumns: "1.25fr 0.9fr",
+            gap: "2.5rem",
             alignItems: "start",
           }}
           className="about-grid"
@@ -94,40 +98,42 @@ const About: React.FC = () => {
             <div
               style={{
                 color: "var(--text-muted)",
-                fontSize: "0.95rem",
+                fontSize: "0.98rem",
                 lineHeight: 1.8,
               }}
             >
-              <p style={{ marginBottom: "1rem" }}>
+              <p style={{ marginBottom: "1.1rem" }}>
                 I&apos;m a mobile software engineer based in{" "}
-                <strong style={{ color: "var(--text)" }}>Osun, Nigeria</strong>,
-                with experience building cross-platform Android and iOS apps
-                using Kotlin Multiplatform. I&apos;ve worked with reputable
-                companies in the{" "}
-                <strong style={{ color: "var(--text)" }}>UK</strong>, shipping
-                production-grade features end-to-end — from architecture
-                through backend integrations to Play Store deployment.
+                <strong style={{ color: "var(--text)" }}>Osun, Nigeria</strong>.
+                I build Android and iOS apps with Kotlin Multiplatform and ship
+                production features end-to-end — from architecture and backend
+                integrations to store release.
               </p>
               <p>
                 Before software, I studied{" "}
                 <strong style={{ color: "var(--text)" }}>Microbiology</strong>{" "}
-                at the University of Ilorin, graduating top of my faculty. That
-                scientific background shapes how I think about problems —
-                systematically, with attention to edge cases — and it&apos;s the
-                reason I&apos;m drawn to healthtech and bioinformatics as
-                long-term application areas.
+                at the University of Ilorin and graduated top of my faculty.
+                That background shapes how I work: systematically, with
+                attention to edge cases. It&apos;s also why I&apos;m drawn to
+                healthtech and bioinformatics.
               </p>
             </div>
           </ScrollReveal>
 
           {/* Right — detail cards */}
           <ScrollReveal delay={0.2}>
-            <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}>
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                gap: "0.75rem",
+              }}
+            >
               {details.map(({ label, value }) => (
                 <div
                   key={label}
                   style={{
-                    background: "var(--surface)",
+                    background: "var(--bg)",
                     border: "1px solid var(--border)",
                     borderRadius: "10px",
                     padding: "1rem 1.25rem",
@@ -136,21 +142,22 @@ const About: React.FC = () => {
                   <p
                     style={{
                       fontSize: "0.72rem",
-                      color: "var(--accent)",
+                      color: "var(--accent-soft)",
                       textTransform: "uppercase",
                       letterSpacing: "0.1em",
                       fontWeight: 600,
-                      marginBottom: "0.3rem",
-                      fontFamily: "'Space Grotesk', sans-serif",
+                      marginBottom: "0.25rem",
+                      fontFamily: "'Plus Jakarta Sans', sans-serif",
                     }}
                   >
                     {label}
                   </p>
                   <p
                     style={{
-                      fontSize: "0.88rem",
+                      fontSize: "0.9rem",
                       color: "var(--text)",
-                      fontFamily: "'Space Grotesk', sans-serif",
+                      fontFamily: "'Plus Jakarta Sans', sans-serif",
+                      fontWeight: 500,
                     }}
                   >
                     {value}
