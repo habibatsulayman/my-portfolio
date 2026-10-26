@@ -265,7 +265,7 @@ export default function Navbar() {
 
         {/* Mobile hamburger */}
         <button
-          className="flex md:hidden"
+          className="nav-hamburger"
           onClick={() => setIsOpen(!isOpen)}
           type="button"
           aria-controls="mobile-menu"
@@ -276,7 +276,6 @@ export default function Navbar() {
             cursor: "pointer",
             color: "var(--text)",
             padding: "0.25rem",
-            display: "flex",
             alignItems: "center",
             justifyContent: "center",
             width: "40px",
@@ -375,6 +374,14 @@ export default function Navbar() {
       )}
 
       <style>{`
+        .nav-hamburger {
+          display: flex;
+        }
+        @media (min-width: 768px) {
+          .nav-hamburger {
+            display: none !important;
+          }
+        }
         /* Branch theme toggle icons via meta[name="color-scheme"] + prefers-color-scheme */
         @media (prefers-color-scheme: dark) {
           :root:not(:has(> head > meta[name="color-scheme"][content="light"])) .theme-opt-dark {
