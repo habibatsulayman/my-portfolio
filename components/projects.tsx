@@ -43,7 +43,7 @@ const mainProjects: Project[] = [
   {
     name: "Rova",
     emoji: "🤖",
-    image: "/projects/AssistantX_Homescreen.PNG",
+    image: "/projects/Rova_homescreen.png",
     imageFit: "portrait",
     badge: { label: "Live", type: "live" },
     description:
@@ -75,12 +75,12 @@ const mainProjects: Project[] = [
   {
     name: "Spendly",
     emoji: "💸",
-    image: "/projects/spendly_homepage.png",
+    image: "/projects/spendly_homepage2.png",
     imageFit: "portrait",
     badge: { label: "Personal Project", type: "personal" },
     description:
-      "Android expense tracker built from scratch with Kotlin and Jetpack Compose. Log, categorise and review daily spending in a Material 3 interface.",
-    tags: ["Kotlin", "Compose"],
+      "Android budgeting app built around the 50/30/20 rule. Log income per stream, get each month's Needs, Investment and Wants budgets calculated automatically, and watch what's left update as you tick off planned items. Built with Kotlin, Jetpack Compose and Room.",
+    tags: ["Kotlin", "Compose", "Room", "MVVM"],
     links: [
       {
         label: "GitHub ↗",
